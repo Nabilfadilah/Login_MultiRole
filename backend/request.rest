@@ -3,13 +3,52 @@ POST http://localhost:5000/users
 Content-Type: application/json
 
 {
-    "name": "M Nabil",
-    "email": "admin@gmail.com",
-    "password": "12345",
-    "confPassword": "12345",
-    "role": "admin"
+    "name": "Riski Kurnia",
+    "email": "karyawan@gmail.com",
+    "password": "098765",
+    "confPassword": "098765",
+    "role": "karyawan"
 }
 
 ###
 // get All Users
 GET http://localhost:5000/users
+
+###
+// get Single User
+GET http://localhost:5000/users/63593d56-d983-4280-95c8-e449b6d26a27
+
+### 
+// update User
+PATCH http://localhost:5000/users/63593d56-d983-4280-95c8-e449b6d26a27
+Content-Type: application/json
+
+{
+    "name": "Riski Update yaaa",
+    "email": "karyawan@gmail.com",
+    "password": "",
+    "confPassword": "",
+    "role": "karyawan"
+}
+
+###
+// delete User
+DELETE http://localhost:5000/users/63593d56-d983-4280-95c8-e449b6d26a27
+
+###
+// login User
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email": "admin@gmail.com",
+    "password": "12345"
+}
+
+###
+// login memastikan kita
+GET http://localhost:5000/me
+
+###
+// logout akun
+DELETE http://localhost:5000/logout
