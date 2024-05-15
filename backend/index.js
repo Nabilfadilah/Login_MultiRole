@@ -2,17 +2,26 @@ import express from "express"
 import cors from "cors"
 import session from "express-session"
 import dotenv from "dotenv"
-// import db from "./config/Database.js"
+import db from "./config/Database.js"
 
 // bikin error
 import UserRoute from './routes/UserRoute.js'
 import ProductRoute from "./routes/ProductRoute.js"
 import AuthRoute from "./routes/AuthRoute.js"
 
+import SequelizeStore from "connect-session-sequelize"
+
 // Load environment variabel
 dotenv.config();
 
 const app = express();
+
+// session untuk store
+const sessionStore = SequelizeStore(session.Store);
+
+const store = new sessionStore({
+    db: db
+})
 
 // Middleware to parse JSON
 app.use(express.json());
@@ -39,6 +48,7 @@ app.use(session({
     secret: process.env.SESS_SECRET,
     resave: false,
     saveUninitialized: true,
+    store: store,
     cookie: {
         secure: 'auto'
     }
@@ -58,6 +68,9 @@ app.use(express.json());
 app.use(UserRoute);
 app.use(ProductRoute);
 app.use(AuthRoute);
+
+// tabel
+// store.sync();
 
 app.listen(process.env.APP_PORT, ()=> {
     console.log('Server up and running...')
