@@ -1,3 +1,6 @@
+// password admin : 12345
+// password karyawan : 098765
+
 // Create a user
 POST http://localhost:5000/users
 Content-Type: application/json
@@ -36,7 +39,7 @@ Content-Type: application/json
 DELETE http://localhost:5000/users/63593d56-d983-4280-95c8-e449b6d26a27
 
 ###
-// login User
+// login User admin
 POST http://localhost:5000/login
 Content-Type: application/json
 
@@ -46,7 +49,7 @@ Content-Type: application/json
 }
 
 ###
-// login user ke 2
+// login user ke 2 karyawan
 POST http://localhost:5000/login
 Content-Type: application/json
 
@@ -56,9 +59,42 @@ Content-Type: application/json
 }
 
 ###
-// login memastikan kita
+// login memastikan kita siapa
 GET http://localhost:5000/me
 
 ###
 // logout akun
 DELETE http://localhost:5000/logout
+
+###--------------------------------------##
+// request untuk mendapatkan data product
+// Get all product
+GET http://localhost:5000/products
+
+###
+// Get Single data product
+GET http://localhost:5000/products/9adc7b74-87f3-4daa-874c-3a76f74ab133
+
+###
+// POST tambah data product
+POST http://localhost:5000/products
+Content-Type: application/json
+
+{
+    "name": "Product 6",
+    "price": "77000"
+}
+
+###
+// edit data
+PATCH http://localhost:5000/products/c9aebc86-c81c-4897-831f-e7b4d42f36c9
+Content-Type: application/json
+
+{
+    "name": "Edit data input karyawan",
+    "price": "11111"
+}
+
+###
+// hapus data
+DELETE http://localhost:5000/products/9adc7b74-87f3-4daa-874c-3a76f74ab133
