@@ -46,6 +46,16 @@ Content-Type: application/json
 }
 
 ###
+// login user ke 2
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email": "karyawan@gmail.com",
+    "password": "098765"
+}
+
+###
 // login memastikan kita
 GET http://localhost:5000/me
 
