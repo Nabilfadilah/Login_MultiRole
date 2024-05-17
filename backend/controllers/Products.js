@@ -11,7 +11,7 @@ export const getProduct = async (req, res) =>{
                 attributes: ['uuid','name','price'],
                 include:[{
                     model: User,
-                attributes: ['uuid','email']
+                attributes: ['uuid','email', 'name']
                 }]
             })
         } else {
@@ -22,7 +22,7 @@ export const getProduct = async (req, res) =>{
                 },
                 include:[{
                     model: User,
-                    attributes: ['uuid','email']
+                    attributes: ['uuid','email', 'name']
                 }]
             })
         }
